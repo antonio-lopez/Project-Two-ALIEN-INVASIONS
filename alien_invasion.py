@@ -23,7 +23,7 @@ def run_game():
     # alien = Alien(ai_settings, screen)
 
     # create the fleet of aliens
-    gf.create_fleet(ai_settings, screen, aliens)
+    gf.create_fleet(ai_settings, screen, ship, aliens)
 
     # start the main loop for the game
     while True:
