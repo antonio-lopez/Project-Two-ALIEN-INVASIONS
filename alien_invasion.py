@@ -34,6 +34,7 @@ def run_game():
         # redraw the screen during each pass through the loop
         # make the most recently drawn screen visible
         gf.update_bullets(bullets)
+        gf.update_aliens(ai_settings, aliens)
         # get rid of bullets that have disappeared
         gf.update_screen(ai_settings, screen, ship, aliens, bullets)
 

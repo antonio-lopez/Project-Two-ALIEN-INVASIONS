@@ -38,6 +38,21 @@ def check_events(ai_settings, screen, ship, bullets):
             check_key_up_events(event, ship)
 
 
+def check_fleet_edges(ai_settings, aliens):
+    # respond appropriately if any aliens have reached an edge
+    for alien in aliens.sprites():
+        if alien.check_edges():
+            change_fleet_direction(ai_settings, aliens)
+            break
+
+
+def change_fleet_direction(ai_settings, aliens):
+    # drop the entire fleet and change the fleet's direction
+    for alien in aliens.sprites():
+        alien.rect.y += ai_settings.fleet_drop_speed
+    ai_settings.fleet_direction *= -1
+
+
 def create_fleet(ai_settings, screen, ship, aliens):
     # create a full fleet of aliens
     # create an alien and find the number of aliens in a row
@@ -84,6 +99,15 @@ def get_number_rows(ai_settings, ship_height, alien_height):
     available_space_y = (ai_settings.screen_height - (3 * alien_height) - ship_height)
     number_rows = int(available_space_y / (2 * alien_height))
     return number_rows
+
+
+def update_aliens(ai_settings, aliens):
+    # check if the fleet is at an edge and then update
+    # the positions of all aliens in the fleet
+    check_fleet_edges(ai_settings, aliens)
+
+    # update the positions of all aliens in the fleet
+    aliens.update()
 
 
 def update_bullets(bullets):
