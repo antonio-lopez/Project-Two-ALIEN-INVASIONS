@@ -110,10 +110,14 @@ def update_aliens(ai_settings, aliens):
     aliens.update()
 
 
-def update_bullets(bullets):
+def update_bullets(aliens, bullets):
     # update position of bullets and get rid of old bullets
     # update bullet position
     bullets.update()
+
+    # check for any bullets that have hit aliens
+    # if so, get rid of the bullet and alien
+    collisions = pygame.sprite.groupcollide(bullets, aliens, True, True)
 
     # get rid of bullets that have disappeared
     for bullet in bullets.copy():
