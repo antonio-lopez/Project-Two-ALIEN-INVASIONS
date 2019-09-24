@@ -1,11 +1,13 @@
 import pygame
+from pygame.sprite import Sprite
 
 
-class Ship:
+class Ship(Sprite):
     # In Pygame, the origin (0, 0) is at the top-left corner of the screen
     # and coordinates increase as you go down and to the right
-    def __init__(self, ai_settings,  screen):
+    def __init__(self, ai_settings, screen):
         # initialize the ship and set its starting position
+        super(Ship, self).__init__()
         self.screen = screen
         self.ai_settings = ai_settings
 
