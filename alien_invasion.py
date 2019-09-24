@@ -1,4 +1,3 @@
-import sys
 import pygame
 from pygame.sprite import Group
 from settings import Settings
@@ -7,7 +6,6 @@ from ship import Ship
 from game_stats import GameStats
 from scoreboard import Scoreboard
 from button import Button
-from alien import Alien
 import game_functions as gf
 
 
@@ -28,9 +26,6 @@ def run_game():
     # make a group to store bullets in
     bullets = Group()
     aliens = Group()
-
-    # make an alien
-    alien = Alien(ai_settings, screen)
 
     # create the fleet of aliens
     gf.create_fleet(ai_settings, screen, ship, aliens)
