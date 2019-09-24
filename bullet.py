@@ -30,3 +30,15 @@ class Bullet(Sprite):
     def draw_bullet(self):
         # draw the bullet to the screen
         pygame.draw.rect(self.screen, self.color, self.rect)
+
+    def draw_button(self):
+        # draw blank button and then draw message
+        self.screen.fill(self.button_color, self.rect)
+        self.screen.blit(self.msg_image, self.msg_image_rect)
+
+    def prep_msg(self, msg):
+        # turn msg into a rendered image and center text on the button
+        self.msg_image = self.font.render(msg, True, self.text_color, self.button_color)
+        self.msg_image_rect = self.msg_image.get_rect()
+        self.msg_image_ret.center = self.rect.center
+
