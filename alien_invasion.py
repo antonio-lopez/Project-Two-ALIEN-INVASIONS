@@ -34,9 +34,9 @@ def run_game():
 
     # start the main loop for the game
     while True:
+
         # watch for keyboard and mouse events
         gf.check_events(ai_settings, screen, stats, sb, play_button, ship, aliens, bullets)
-
         if stats.game_active:
             ship.update()
 
@@ -44,6 +44,7 @@ def run_game():
             # make the most recently drawn screen visible
             gf.update_bullets(ai_settings, screen, stats, sb, ship, aliens, bullets)
             gf.update_aliens(ai_settings, screen, stats, sb, ship, aliens, bullets)
+
         bullets.update()
 
         # get rid of bullets that have disappeared

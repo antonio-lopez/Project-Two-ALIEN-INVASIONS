@@ -46,7 +46,6 @@ def check_events(ai_settings, screen, stats, sb, play_button, ship, aliens, bull
             check_play_button(ai_settings, screen, stats, sb, play_button, ship, aliens, bullets, mouse_x, mouse_y)
         elif event.type == pygame.KEYDOWN:
             check_key_down_events(event, ai_settings, screen, ship, bullets)
-
         elif event.type == pygame.KEYUP:
             check_key_up_events(event, ship)
 
@@ -59,7 +58,6 @@ def check_play_button(ai_settings, screen, stats, sb, play_button, ship, aliens,
         ai_settings.initialize_dynamic_settings()
         # Hide the mouse cursor.
         pygame.mouse.set_visible(False)
-
         # Reset the game statistics.
         stats.reset_stats()
         stats.game_active = True
@@ -94,6 +92,8 @@ def check_bullet_alien_collisions(ai_settings, screen, stats, sb, ship, aliens, 
     # if so, get rid of the bullet and alien
     collisions = pygame.sprite.groupcollide(bullets, aliens, True, True)
     if collisions:
+        pygame.mixer.music.load('alien_explode.ogg')
+        pygame.mixer.music.play(0)
         for aliens in collisions.values():
             stats.score += ai_settings.alien_points * len(aliens)
             sb.prep_score()
@@ -159,6 +159,8 @@ def fire_bullet(ai_settings, screen, ship, bullets):
     if len(bullets) < ai_settings.bullets_allowed:
         new_bullet = Bullet(ai_settings, screen, ship)
         bullets.add(new_bullet)
+        pygame.mixer.music.load('fire_sound.ogg')
+        pygame.mixer.music.play(0)
 
 
 def get_number_aliens_x(ai_settings, alien_width):
@@ -179,6 +181,8 @@ def ship_hit(ai_settings, screen, stats, sb, ship, aliens, bullets):
     # respond to ship being hit by alien
 
     if stats.ships_left > 0:
+        pygame.mixer.music.load('ship_explode.ogg')
+        pygame.mixer.music.play(0)
         # decrement ships_left
         stats.ships_left -= 1
 
