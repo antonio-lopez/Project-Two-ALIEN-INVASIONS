@@ -6,7 +6,7 @@ from time import sleep
 
 
 def check_key_down_events(event, ai_settings, screen, ship, bullets):
-    # respond to key presses
+    """respond to key presses"""
     if event.key == pygame.K_RIGHT:
         # move the ship to the right continuously
         ship.moving_right = True
@@ -27,7 +27,7 @@ def check_key_up_events(event, ship):
 
 
 def check_aliens_bottom(ai_settings, screen, stats, sb, ship, aliens, bullets):
-    # check if any aliens have reached the bottom of the screen
+    """check if any aliens have reached the bottom of the screen"""
     screen_rect = screen.get_rect()
     for alien in aliens.sprites():
         if alien.rect.bottom >= screen_rect.bottom:
@@ -37,7 +37,7 @@ def check_aliens_bottom(ai_settings, screen, stats, sb, ship, aliens, bullets):
 
 
 def check_events(ai_settings, screen, stats, sb, play_button, ship, aliens, bullets):
-    # respond to key presses and mouse events
+    """respond to key presses and mouse events"""
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             sys.exit()

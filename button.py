@@ -19,6 +19,7 @@ class Button:
         self.rect.center = self.screen_rect.center
         self.msg_image = self.font.render(msg, True, self.text_color, self.button_color)
         self.msg_image_rect = self.msg_image.get_rect()
+
         # the button message needs to be prepped only once
         self.prep_msg(msg)
 
