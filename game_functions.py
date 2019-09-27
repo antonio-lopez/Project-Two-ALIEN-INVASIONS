@@ -157,10 +157,10 @@ def fire_bullet(ai_settings, screen, ship, bullets):
     # fire a bullet if limit not reached
     # create a new bullet and add it to the bullets group
     if len(bullets) < ai_settings.bullets_allowed:
-        new_bullet = Bullet(ai_settings, screen, ship)
-        bullets.add(new_bullet)
         pygame.mixer.music.load('fire_sound.ogg')
         pygame.mixer.music.play(0)
+        new_bullet = Bullet(ai_settings, screen, ship)
+        bullets.add(new_bullet)
 
 
 def get_number_aliens_x(ai_settings, alien_width):

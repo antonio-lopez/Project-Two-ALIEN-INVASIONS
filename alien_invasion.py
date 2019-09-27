@@ -44,13 +44,6 @@ def run_game():
             gf.update_bullets(ai_settings, screen, stats, sb, ship, aliens, bullets)
             gf.update_aliens(ai_settings, screen, stats, sb, ship, aliens, bullets)
 
-        bullets.update()
-
-        # get rid of bullets that have disappeared
-        for bullet in bullets.copy():
-            if bullet.rect.bottom <= 0:
-                bullets.remove(bullet)
-
         gf.update_screen(ai_settings, screen, ship, stats, sb, aliens, bullets, play_button)
 
 
